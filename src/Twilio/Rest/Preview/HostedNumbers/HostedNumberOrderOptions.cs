@@ -120,6 +120,14 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// Verification Document Sid
         /// </summary>
         public string VerificationDocumentSid { get; set; }
+        /// <summary>
+        /// The extension
+        /// </summary>
+        public string Extension { get; set; }
+        /// <summary>
+        /// The call_delay
+        /// </summary>
+        public int? CallDelay { get; set; }
 
         /// <summary>
         /// Construct a new UpdateHostedNumberOrderOptions
@@ -175,6 +183,16 @@ namespace Twilio.Rest.Preview.HostedNumbers
             if (VerificationDocumentSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("VerificationDocumentSid", VerificationDocumentSid.ToString()));
+            }
+
+            if (Extension != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Extension", Extension));
+            }
+
+            if (CallDelay != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallDelay", CallDelay.Value.ToString()));
             }
 
             return p;
@@ -377,7 +395,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (SmsUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
             }
 
             if (SmsMethod != null)
@@ -387,7 +405,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (SmsFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
             }
 
             if (SmsFallbackMethod != null)
@@ -397,7 +415,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (StatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackUrl", StatusCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("StatusCallbackUrl", Serializers.Url(StatusCallbackUrl)));
             }
 
             if (StatusCallbackMethod != null)

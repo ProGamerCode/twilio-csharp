@@ -253,6 +253,10 @@ namespace Twilio.Rest.IpMessaging.V2
         /// The post_webhook_retry_count
         /// </summary>
         public int? PostWebhookRetryCount { get; set; }
+        /// <summary>
+        /// The notifications.log_enabled
+        /// </summary>
+        public bool? NotificationsLogEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -377,12 +381,12 @@ namespace Twilio.Rest.IpMessaging.V2
 
             if (PreWebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("PreWebhookUrl", PreWebhookUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("PreWebhookUrl", Serializers.Url(PreWebhookUrl)));
             }
 
             if (PostWebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("PostWebhookUrl", PostWebhookUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("PostWebhookUrl", Serializers.Url(PostWebhookUrl)));
             }
 
             if (WebhookMethod != null)
@@ -418,6 +422,11 @@ namespace Twilio.Rest.IpMessaging.V2
             if (PostWebhookRetryCount != null)
             {
                 p.Add(new KeyValuePair<string, string>("PostWebhookRetryCount", PostWebhookRetryCount.Value.ToString()));
+            }
+
+            if (NotificationsLogEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Notifications.LogEnabled", NotificationsLogEnabled.Value.ToString().ToLower()));
             }
 
             return p;

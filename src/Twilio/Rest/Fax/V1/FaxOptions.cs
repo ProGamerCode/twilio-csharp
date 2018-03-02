@@ -140,6 +140,10 @@ namespace Twilio.Rest.Fax.V1
         /// Whether or not to store media
         /// </summary>
         public bool? StoreMedia { get; set; }
+        /// <summary>
+        /// How many minutes to attempt a fax
+        /// </summary>
+        public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new CreateFaxOptions
@@ -165,7 +169,7 @@ namespace Twilio.Rest.Fax.V1
 
             if (MediaUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("MediaUrl", MediaUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("MediaUrl", Serializers.Url(MediaUrl)));
             }
 
             if (Quality != null)
@@ -175,7 +179,7 @@ namespace Twilio.Rest.Fax.V1
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
             }
 
             if (From != null)
@@ -196,6 +200,11 @@ namespace Twilio.Rest.Fax.V1
             if (StoreMedia != null)
             {
                 p.Add(new KeyValuePair<string, string>("StoreMedia", StoreMedia.Value.ToString().ToLower()));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
             return p;

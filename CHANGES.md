@@ -1,6 +1,73 @@
 twilio-csharp Changelog
 =======================
 
+[2018-02-23] Version 5.9.7
+---------------------------
+**Api**
+- Add `trim` param to Outbound Calls API
+
+**Lookups**
+- Add support for `fraud` lookup type
+
+**Numbers**
+- Initial Release
+
+**Video**
+- [composer] Add `SEQUENCE` value to available layouts, and `trim` and `reuse` params.
+
+
+[2018-02-09] Version 5.9.6
+---------------------------
+**Api**
+- Add `AnnounceUrl` and `AnnounceMethod` params for conference announce
+
+**Chat**
+- Add support to looking up user channels by identity in v1
+
+
+[2018-01-30] Version 5.9.5
+---------------------------
+**Api**
+- Add `studio-engagements` usage key
+
+**Preview**
+- Remove Studio Engagement Deletion
+
+**Studio**
+- Initial Release
+
+**Video**
+- [omit] Beta: Allow updates to `SubscribedTracks`.
+- Add `SubscribedTracks`.
+- Add track name to Video Recording resource
+- Add Composition and Composition Media resources
+
+
+[2018-01-22] Version 5.9.4
+---------------------------
+**Library**
+- PR #407: Remove "$" String Interpolation to Support Compilation in .NET <4.6. Thanks @tjhalva!
+
+[2018-01-22] Version 5.9.3
+---------------------------
+**Api**
+- Add `conference_sid` property on Recordings
+- Add proxy and sms usage key
+
+**Chat**
+- Make user channels accessible by identity
+- Add notifications logs flag parameter
+
+**Fax**
+- Added `ttl` parameter
+  `ttl` is the number of minutes a fax is considered valid.
+
+**Preview**
+- Add `call_delay`, `extension`, `verification_code`, and `verification_call_sids`.
+- Add `failure_reason` to HostedNumberOrders.
+- Add DependentHostedNumberOrders endpoint for AuthorizationDocuments preview API.
+
+
 [2017-12-15] Version 5.9.2
 ---------------------------
 **Api**
